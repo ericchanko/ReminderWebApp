@@ -22,9 +22,20 @@ let remindersController = {
     },
 
     create: (req, res) => {
-        let nextId = database.cindy.reminders[database.cindy.reminders.length - 1].id
+      
+        // find lowest available positive integer id
+        id_list = []
+        for (item of database.cindy.reminders) {
+            id_list.push(item.id)
+        }
+        const set = new Set(id_list);
+        let id = 1;
+        while (set.has(id)) {
+            id++
+        }
+        
         let reminder = {
-            id: nextId + 1,
+            id: id,
             title: req.body.title,
             description: req.body.description,
             completed: false,
