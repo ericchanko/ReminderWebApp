@@ -22,9 +22,9 @@ let remindersController = {
     },
 
     create: (req, res) => {
-      
+
         // find lowest available positive integer id
-        id_list = []
+        let id_list = [];
         for (item of database.cindy.reminders) {
             id_list.push(item.id)
         }
@@ -33,7 +33,7 @@ let remindersController = {
         while (set.has(id)) {
             id++
         }
-        
+
         let reminder = {
             id: id,
             title: req.body.title,
