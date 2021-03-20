@@ -1,2 +1,14 @@
-//TODO
-// implement functions to test authentication of user when going to new page
+module.exports = {
+  ensureAuthenticated: function (req, res, next) {
+    if (req.isAuthenticated()) {
+      return next();
+    }
+    res.redirect("/login");
+  },
+  forwardAuthenticated: function (req, res, next) {
+    if (!req.isAuthenticated()) {
+      return next();
+    }
+    res.redirect("/reminders");
+  },
+};
