@@ -1,9 +1,10 @@
 const database = [
   {
+    //changed jimmy for faster testing
     id: 1,
     name: "Jimmy Smith",
-    email: "jimmy123@gmail.com",
-    password: "jimmy123!",
+    email: "jimmy1@gmail.com",
+    password: "j",
   },
   {
     id: 2,
