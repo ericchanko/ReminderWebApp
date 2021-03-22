@@ -4,6 +4,7 @@ Hugo Kwan:
 I worked on the following tasks:
 1. Implemented update functionality
 2. Updated create function to assign id correctly
+
 I also needed to research on Youtube and Google the following things:
 1. How to find the lowest available id efficiently 
 2.
