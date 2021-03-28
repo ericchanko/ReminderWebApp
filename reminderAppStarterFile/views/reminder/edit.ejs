@@ -29,6 +29,7 @@
     <div class="form-group">
         <label for="date">Remind me on</label>
         <input type="datetime-local" id="notify-date" name="datetime" value="<%= reminderItem.datetime %>" min="<%= today %>">
+        <button type="button" onclick="clearValue()" class="btn btn-warning">Clear</button>
     </div>
 
     <div class="form-group">
@@ -57,3 +58,7 @@
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>
+<script>
+    let datepickerElem = document.querySelector("#notify-date")
+    function clearValue() { datepickerElem.value = "" }
+</script>
