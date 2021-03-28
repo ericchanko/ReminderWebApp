@@ -1,7 +1,7 @@
-const userModel = require("../model/userModel").userModel;
+const dataModel = require("../database").userModel;
 
 const getUserByEmailIdAndPassword = (email, password) => {
-  let user = userModel.findOne(email);
+  let user = dataModel.findOne(email);
   if (user) {
     if (isUserValid(user, password)) {
       return user;
@@ -10,7 +10,7 @@ const getUserByEmailIdAndPassword = (email, password) => {
   return null;
 };
 const getUserById = (id) => {
-  let user = userModel.findById(id);
+  let user = dataModel.findById(id);
   if (user) {
     return user;
   }

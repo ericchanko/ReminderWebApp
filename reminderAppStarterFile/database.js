@@ -1,27 +1,43 @@
-let database = {
-    cindy: {
-        reminders: [],
-        login: {
-            id: 2,
-            name: "cindy Doe",
-            email: "cindy@gmail.com",
-            password: "c",
-        }
+let database = [
+
+    {
+        reminders: [{id: 1, title: "Title", description: "description", completed: false}],
+        id: 2,
+        name: "cindy Doe",
+        email: "cindy@gmail.com",
+        password: "c",
     },
-    jimmy: {
-        reminders: [],
-        login:
-            {
-                id: 1,
-                name: "Jimmy Smith",
-                email: "jimmy123@gmail.com",
-                password: "j",
-            }
+
+    {
+        reminders: [{id: 1, title: "Title2", description: "description2", completed: false}],
+        id: 1,
+        name: "Jimmy Smith",
+        email: "jimmy123@gmail.com",
+        password: "j",
     }
-};
+];
+
 
 const userModel = {
-    //TODO
-    // Make it so that you can find users and their login info according to database
+    findOne: (email) => {
+        for (const person of database) {
+            if (person.email === email) {
+                return person
+            }
+        }
+        throw new Error(`Couldn't find user with email: ${email}`)
+      },
+      findById: (id) => {
+        for (const person of database) {
+            if (person.id === id) {
+                return person
+            }
+        }
+        if (user) {
+          return user;
+        }
+        throw new Error(`Couldn't find user with id: ${id}`);
+    },
 };
-module.exports = database;
+
+module.exports = {database, userModel};
