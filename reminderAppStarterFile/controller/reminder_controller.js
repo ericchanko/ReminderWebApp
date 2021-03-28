@@ -39,6 +39,7 @@ let remindersController = {
             title: req.body.title,
             description: req.body.description,
             completed: false,
+            datetime: req.body.datetime
         };
         database.cindy.reminders.push(reminder);
         res.redirect("/reminders");
@@ -59,12 +60,14 @@ let remindersController = {
         let title = req.body.title
         let desc = req.body.description
         let status = req.body.completed
+        let datetime = req.body.datetime
 
         for (var r in database.cindy.reminders) {
             if (database.cindy.reminders[r].id.toString() === reminderToUpdate) {
             database.cindy.reminders[r].title = title;
             database.cindy.reminders[r].description = desc;
             database.cindy.reminders[r].completed = JSON.parse(status);
+            database.cindy.reminders[r].datetime = datetime
             break;
             }
         }
