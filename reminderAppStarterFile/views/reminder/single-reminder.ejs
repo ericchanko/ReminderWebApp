@@ -5,6 +5,23 @@
       <li class="list-group-item">
         <h3><strong><%= reminderItem.title %>: </strong></h3>
         <h4><%= reminderItem.description %></h4>
+
+        
+        <img src="https://visualpharm.com/assets/449/Alarm-595b40b75ba036ed117d53a8.svg" alt="Alarm Image" style="width:25px;height:25px;display:inline;margin-right:5px;">
+        <% 
+            var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric'};
+            let d = new Date(reminderItem.datetime); 
+            let date = d.toLocaleDateString("en-US", options);
+        
+        %>
+
+        <% if (reminderItem.datetime) { %>
+            <%= date %>
+        <% } else { %>
+            No reminder time set
+        <% } %>
+
+
         <h4>Completed:
           <% if (reminderItem.completed == true) { %>
             <span class="label label-success">True</span>
