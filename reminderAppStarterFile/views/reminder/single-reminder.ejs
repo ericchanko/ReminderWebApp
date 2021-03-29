@@ -6,14 +6,15 @@
         <h3><strong><%= reminderItem.title %>: </strong></h3>
         <h4><%= reminderItem.description %></h4>
         
+        <div>
         <% if (reminderItem.tags.length !== 0) { %>
                 <h4>Tags:</h4>
                 <% for (tags of reminderItem.tags) { %>
                     <button type="button" class="btn-primary"><%= tags %></button>
                     <% } %>
                         <% } %>
-
-        
+        </div>
+        <div>
         <img src="https://visualpharm.com/assets/449/Alarm-595b40b75ba036ed117d53a8.svg" alt="Alarm Image" style="width:25px;height:25px;display:inline;margin-right:5px;">
         <% 
             var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric'};
@@ -27,6 +28,7 @@
         <% } else { %>
             No reminder time set
         <% } %>
+        </div>
 
         <h4>Subtasks</h4>
         <ul id="subtask-list" class="list-unstyled checkbox" name="subtasks">
