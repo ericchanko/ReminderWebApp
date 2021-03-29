@@ -29,7 +29,32 @@
     <div class="form-group">
         <label for="date">Remind me on</label>
         <input type="datetime-local" id="notify-date" name="datetime" value="<%= reminderItem.datetime %>" min="<%= today %>">
-        <button type="button" onclick="clearValue()" class="btn btn-warning">Clear</button>
+        <button type="button" onclick="clearValue()" class="btn btn-sm btn-warning">Clear</button>
+    </div>
+
+    <div class="checkbox subtask-form">
+        <label for="subtasks">Subtasks</label>
+        <ul id="subtask-list" class="list-unstyled" name="subtasks">
+
+            <% for (let key in reminderItem.subtasks) { %>
+                <li style="padding-left:10px">
+                    <label>
+                        <% if (reminderItem.subtasks[key] === "1") { %>
+                            <input type="hidden" name="subtasks[<%= key %>]" value="0" disabled>
+                            <input type="checkbox" name="subtasks[<%= key %>]" value="1" onclick="setDisabled(this)" class="checkboxes" checked>
+                        <% } else { %>
+                            <input type="hidden" name="subtasks[<%= key %>]" value="0">
+                            <input type="checkbox" name="subtasks[<%= key %>]" value="1" onclick="setDisabled(this)" class="checkboxes">
+                        <% } %>
+                        <span class=checkedLabel><%= key %></span>
+                </label>
+                </li>
+            <% } %>
+        </ul>
+
+        <input type="text" placeholder="E.g. Buy milk" id="subtask-input">
+
+        <span onclick="newSubtask()" class="btn btn-sm btn-outline-secondary">Add</span>
     </div>
 
     <div class="form-group">
@@ -61,4 +86,50 @@
 <script>
     let datepickerElem = document.querySelector("#notify-date")
     function clearValue() { datepickerElem.value = "" }
+    
+    function setDisabled(thisElem) {
+        // need 2 .previousSibling b/c using only 1 targets a #text element ???
+        if (thisElem.previousSibling.previousSibling.disabled) {
+            thisElem.previousSibling.previousSibling.disabled = false
+        }
+        else {
+            thisElem.previousSibling.previousSibling.disabled = true
+        }
+    }
+    function newSubtask() {
+        let subtaskListElem = document.querySelector("#subtask-list")
+        let inputFieldElem = document.querySelector("#subtask-input")
+        let textInput = inputFieldElem.value
+        let textNode = document.createTextNode(textInput)
+
+        if (textInput.trim() != 0) {
+
+            // need a hidden element b/c u cant post unchecked checkboxes
+            let inputElem = document.createElement("INPUT")
+            inputElem.setAttribute("type", "hidden")
+            inputElem.setAttribute("name", `subtasks[${textInput}]`)
+            inputElem.setAttribute("value", "0")
+
+            let inputElem2 = document.createElement("INPUT")
+            inputElem2.setAttribute("type", "checkbox")
+            inputElem2.setAttribute("name", `subtasks[${textInput}]`)
+            inputElem2.setAttribute("value", "1")
+            inputElem2.setAttribute("onclick", "setDisabled(this)")
+            inputElem2.setAttribute("class", "checkboxes")
+
+            let li = document.createElement('LI')
+            li.setAttribute("style", "padding-left:10px")
+
+            let label = document.createElement("LABEL")
+            label.appendChild(inputElem)
+            label.appendChild(inputElem2)
+
+            let text = document.createTextNode(textInput)
+            label.appendChild(text)
+
+            li.appendChild(label)
+            subtaskListElem.appendChild(li)
+        }
+        inputFieldElem.value = "" 
+    }
 </script>

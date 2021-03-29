@@ -21,7 +21,24 @@
             No reminder time set
         <% } %>
 
+        <h4>Subtasks</h4>
+        <ul id="subtask-list" class="list-unstyled checkbox" name="subtasks">
 
+            <% for (let key in reminderItem.subtasks) { %>
+                <li style="padding-left:10px">
+                    <label>
+                        <% if (reminderItem.subtasks[key] === "1") { %>
+                            <input type="checkbox" name="subtasks[<%= key %>]" value="1" class="checkboxes" checked onclick="return false">
+                        <% } else { %>
+                            <input type="checkbox" name="subtasks[<%= key %>]" value="1" class="checkboxes" onclick="return false">
+                        <% } %>
+                        <span class=checkedLabel><%= key %></span>
+                    </label>
+                </li>
+
+            <% } %>
+        </ul>
+        
         <h4>Completed:
           <% if (reminderItem.completed == true) { %>
             <span class="label label-success">True</span>

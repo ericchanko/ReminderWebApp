@@ -41,7 +41,8 @@ let remindersController = {
             title: req.body.title,
             description: req.body.description,
             completed: false,
-            datetime: req.body.datetime
+            datetime: req.body.datetime,
+            subtasks: req.body.subtasks,
         };
         req.user.reminders.push(reminder);
         res.redirect("/reminders");
@@ -63,13 +64,15 @@ let remindersController = {
         let desc = req.body.description
         let status = req.body.completed
         let datetime = req.body.datetime
+        let subtasks = req.body.subtasks
 
         for (var r in req.user.reminders) {
             if (req.user.reminders[r].id.toString() === reminderToUpdate) {
             req.user.reminders[r].title = title;
             req.user.reminders[r].description = desc;
             req.user.reminders[r].completed = JSON.parse(status);
-            req.user.reminders[r].datetime = datetime
+            req.user.reminders[r].datetime = datetime;
+            req.user.reminders[r].subtasks = subtasks;
             break;
             }
         }

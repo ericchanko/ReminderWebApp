@@ -27,10 +27,70 @@
 
     <div class="form-group">
         <label for="datetime">Remind me on</label>
-        <input type="datetime-local" id="notify-date" name="datetime" min="<%= today %>">
-        
+        <input type="datetime-local" id="notify-date" name="datetime" min="<%= today %>"> 
     </div>
 
+    <div class="checkbox subtask-form">
+        <label for="subtasks">Subtasks</label>
+        <ul id="subtask-list" class="list-unstyled" name="subtasks">
+            <!-- subtasks are added here -->
+        </ul>
+
+        <input type="text" placeholder="E.g. Buy milk" id="subtask-input">
+
+        <span onclick="newSubtask()" class="btn btn-sm btn-outline-secondary">Add</span>
+    </div>
+    
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>
+<script>
+    function setDisabled(thisElem) {
+        if (thisElem.previousSibling.disabled) {
+            thisElem.previousSibling.disabled = false
+        }
+        else {
+            thisElem.previousSibling.disabled = true
+        }
+    }
+    function newSubtask() {
+        let subtaskListElem = document.querySelector("#subtask-list")
+        let inputFieldElem = document.querySelector("#subtask-input")
+        let textInput = inputFieldElem.value
+        let textNode = document.createTextNode(textInput)
+
+        if (textInput.trim() != 0) {
+
+            // need a hidden element b/c u cant post unchecked checkboxes
+            let inputElem = document.createElement("INPUT")
+            inputElem.setAttribute("type", "hidden")
+            inputElem.setAttribute("name", `subtasks[${textInput}]`)
+            inputElem.setAttribute("value", "0")
+
+            let inputElem2 = document.createElement("INPUT")
+            inputElem2.setAttribute("type", "checkbox")
+            inputElem2.setAttribute("name", `subtasks[${textInput}]`)
+            inputElem2.setAttribute("value", "1")
+            inputElem2.setAttribute("onclick", "setDisabled(this)")
+            inputElem2.setAttribute("class", "checkboxes")
+
+            let li = document.createElement('LI')
+            li.setAttribute("style", "padding-left:10px")
+
+            let span = document.createElement("SPAN")
+            span.setAttribute("class", "checkedLabel")
+
+            let text = document.createTextNode(textInput)
+            span.appendChild(text)
+
+            let label = document.createElement("LABEL")
+
+            label.appendChild(inputElem)
+            label.appendChild(inputElem2)
+            label.appendChild(span)
+            li.appendChild(label)
+            subtaskListElem.appendChild(li)
+        }
+        inputFieldElem.value = "" 
+    }
+</script>

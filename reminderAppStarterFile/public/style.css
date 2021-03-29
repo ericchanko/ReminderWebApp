@@ -134,3 +134,19 @@ footer.footer {
   margin-bottom: 10px;
   margin-top: 10px;
 }
+
+.checkboxes {
+    margin-right: 10px;
+}
+
+#subtask-list {
+    margin: 0;
+}
+
+.subtask-form {
+    padding-bottom: 20px;
+}
+
+.checkboxes:checked + .checkedLabel {
+    text-decoration: line-through;
+}

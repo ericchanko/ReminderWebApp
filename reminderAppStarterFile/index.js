@@ -10,7 +10,7 @@ const reminderController = require("./controller/reminder_controller");
 const authController = require("./controller/auth_controller");
 const passport = require("./middleware/passport");
 const {ensureAuthenticated, forwardAuthenticated} = require("./middleware/checkAuth")
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 
 app.use(
   session({
