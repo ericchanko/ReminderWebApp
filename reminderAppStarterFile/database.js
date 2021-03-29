@@ -1,7 +1,7 @@
 let database = [
 
     {
-        reminders: [{id: 1, title: "Title", description: "description", completed: false, subtasks: { a: '0', b: '0', c: '1' }}],
+        reminders: [{id: 1, title: "Title", description: "description", completed: false, subtasks: { a: '0', b: '0', c: '1' }, tags: []}],
         id: 2,
         name: "cindy Doe",
         email: "cindy@gmail.com",
@@ -9,7 +9,7 @@ let database = [
     },
 
     {
-        reminders: [{id: 1, title: "Title2", description: "description2", completed: false}],
+        reminders: [{id: 1, title: "Title2", description: "description2", completed: false, tags: []}],
         id: 1,
         name: "Jimmy Smith",
         email: "jimmy123@gmail.com",
