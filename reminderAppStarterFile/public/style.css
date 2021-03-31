@@ -149,4 +149,42 @@ footer.footer {
 
 .checkboxes:checked + .checkedLabel {
     text-decoration: line-through;
+    color: gray;
+}
+
+.subtask-items {
+    position: relative;
+    margin-bottom: 5px;
+}
+
+.delete-task {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 6px 12px;
+}
+
+.subtask-input-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.add-task {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 7px 13px;
+}
+
+.delete-task:hover, .add-task:hover {
+    background-color: #f44336;
+    color: white;
+    cursor: pointer;
+}
+
+.add-task:hover {
+    background-color: lightgreen;
+}
+.delete-task:hover {
+    background-color: #f44336;
 }
