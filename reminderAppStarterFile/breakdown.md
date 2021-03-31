@@ -4,12 +4,15 @@ Hugo Kwan:
 I worked on the following tasks:
 1. Implemented update functionality
 2. Updated create function to assign id correctly
-3. Created a datepicker functionality for remidners
+3. Created a datepicker functionality for reminders
 4. Added a .gitignore file to ignore node modules
+5. Added subtasks functionality for create, edit, and single reminders
 
 I also needed to research on Youtube and Google the following things:
 1. How to find the lowest available id efficiently 
-2.
+2. How to use input datetime-local
+3. How to POST unchecked checkboxes 
+4. How to strikethrough text when checkbox is checked
 
 Nolan Chow:
 I worked on the following tasks:
