@@ -46,12 +46,12 @@
                     <label>
                         <% if (reminderItem.subtasks[key] === "1") { %>
                             <input type="hidden" name="subtasks[<%= key %>]" value="0" disabled>
-                            <input type="checkbox" name="subtasks[<%= key %>]" value="1" onclick="setDisabled(this)" class="checkboxes" checked>
+                            <input type="checkbox" name="subtasks[<%= key %>]" value="1" onclick="setDisabled(this)" class="checkboxes" checked style="margin-right:5px">
                         <% } else { %>
                             <input type="hidden" name="subtasks[<%= key %>]" value="0">
-                            <input type="checkbox" name="subtasks[<%= key %>]" value="1" onclick="setDisabled(this)" class="checkboxes">
+                            <input type="checkbox" name="subtasks[<%= key %>]" value="1" onclick="setDisabled(this)" class="checkboxes" style="margin-right:5px">
                         <% } %>
-                        <span class=checkedLabel><%= key %></span>
+                        <span class="checkedLabel"><%= key %></span>
                 </label>
                 <span class="delete-task" onclick="deleteSubtask(this)">×</span>
                 </li>

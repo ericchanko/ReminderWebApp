@@ -135,8 +135,9 @@ footer.footer {
   margin-top: 10px;
 }
 
-.checkboxes {
+.checkboxes, .checkedLabel {
     margin-right: 10px;
+    cursor: pointer;
 }
 
 #subtask-list {
