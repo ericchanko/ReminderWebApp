@@ -12,7 +12,7 @@
                 <% if (reminderItem.tags.length !== 0) { %>
                     <h4>Tags:</h4>
                     <% for (tags of reminderItem.tags) { %>
-                        <button type="button" onclick="deleteTag()" class="btn btn-primary"><%= tags %></button>
+                        <button type="button" onclick="deleteTag(this)" class="btn btn-primary"><%= tags %></button>
                         <% } %>
                             <% } %>
             </div>
@@ -66,10 +66,10 @@
 
         </li>
     </ul>
-    <!-- <script>
-        deleteTag = () => {
-            alert("hello")
+    <script>
+        function deleteTag(me) {
+            me.remove()
         }
-    </script> -->
+    </script>
 
 </div>

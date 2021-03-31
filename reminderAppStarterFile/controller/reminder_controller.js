@@ -63,8 +63,9 @@ let remindersController = {
 
         let tag = req.user.reminders[0].tags
             //Looks at all the tags stored in database and adds user input
+
         splitItems = req.body.tag.split(', ')
-        if (splitItems.length !== 0) {
+        if (splitItems.length !== 0 && splitItems[0] !== '') {
             for (items of splitItems) {
                 tag.push(items)
             }
@@ -74,6 +75,7 @@ let remindersController = {
         let status = req.body.completed
         let datetime = req.body.datetime
         let subtasks = req.body.subtasks
+
 
         for (var r in req.user.reminders) {
             if (req.user.reminders[r].id.toString() === reminderToUpdate) {
