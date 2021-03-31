@@ -35,6 +35,11 @@ let remindersController = {
         while (set.has(id)) {
             id++
         }
+        listTags = req.body.tag.split(', ')
+        if (listTags == '') {
+            //Kind of scuffed way to fix this. Will think of better implementation later.
+            listTags = []
+        }
 
         let reminder = {
             id: id,
@@ -42,7 +47,7 @@ let remindersController = {
             description: req.body.description,
             completed: false,
             datetime: req.body.datetime,
-            tags: req.body.tag.split(', '),
+            tags: listTags,
             subtasks: req.body.subtasks,
         };
         req.user.reminders.push(reminder);
@@ -70,19 +75,15 @@ let remindersController = {
                 tag.push(items)
             }
         }
-        let title = req.body.title
-        let desc = req.body.description
-        let status = req.body.completed
-        let datetime = req.body.datetime
-        let subtasks = req.body.subtasks
+        let { title, description, completed, datetime, subtasks } = req.body;
 
 
         for (var r in req.user.reminders) {
             if (req.user.reminders[r].id.toString() === reminderToUpdate) {
                 req.user.reminders[r].title = title;
-                req.user.reminders[r].description = desc;
+                req.user.reminders[r].description = description;
                 req.user.reminders[r].tags = tag;
-                req.user.reminders[r].completed = JSON.parse(status);
+                req.user.reminders[r].completed = JSON.parse(completed);
                 req.user.reminders[r].datetime = datetime;
                 req.user.reminders[r].subtasks = subtasks;
                 break;

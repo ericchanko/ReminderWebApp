@@ -42,7 +42,7 @@
         <ul id="subtask-list" class="list-unstyled" name="subtasks">
 
             <% for (let key in reminderItem.subtasks) { %>
-                <li style="padding-left:10px">
+                <li class="form-control subtask-items">
                     <label>
                         <% if (reminderItem.subtasks[key] === "1") { %>
                             <input type="hidden" name="subtasks[<%= key %>]" value="0" disabled>
@@ -53,13 +53,15 @@
                         <% } %>
                         <span class=checkedLabel><%= key %></span>
                 </label>
+                <span class="delete-task" onclick="deleteSubtask(this)">×</span>
                 </li>
             <% } %>
         </ul>
 
-        <input type="text" placeholder="E.g. Buy milk" id="subtask-input">
-
-        <span onclick="newSubtask()" class="btn btn-sm btn-outline-secondary">Add</span>
+        <div class="subtask-input-container">
+            <input type="text" placeholder="E.g. Buy milk" id="subtask-input" class="form-control">
+            <span class="add-task" onclick="newSubtask()">+</span>
+        </div>
     </div>
 
     <div class="form-group">
@@ -122,19 +124,35 @@
             inputElem2.setAttribute("onclick", "setDisabled(this)")
             inputElem2.setAttribute("class", "checkboxes")
 
-            let li = document.createElement('LI')
-            li.setAttribute("style", "padding-left:10px")
+            // delete sub task
+            let spanDeleteElem = document.createElement("SPAN")
+            spanDeleteElem.setAttribute("class", "delete-task")
+            spanDeleteElem.innerText = "×"
+            spanDeleteElem.setAttribute("onclick", "deleteSubtask(this)")
 
-            let label = document.createElement("LABEL")
-            label.appendChild(inputElem)
-            label.appendChild(inputElem2)
+            let li = document.createElement('LI')
+            li.setAttribute("class", "form-control subtask-items")
+
+            let span = document.createElement("SPAN")
+            span.setAttribute("class", "checkedLabel")
 
             let text = document.createTextNode(textInput)
-            label.appendChild(text)
+            span.appendChild(text)
 
+            let label = document.createElement("LABEL")
+
+            label.appendChild(inputElem)
+            label.appendChild(inputElem2)
+            label.appendChild(span)
             li.appendChild(label)
+            li.appendChild(spanDeleteElem)
             subtaskListElem.appendChild(li)
         }
         inputFieldElem.value = "" 
+    }
+    function deleteSubtask(thisElem) {
+		let listItem = thisElem.parentNode;
+		let ul = listItem.parentNode;
+		ul.removeChild(listItem);
     }
 </script>

@@ -1,7 +1,7 @@
 let database = [
 
     {
-        reminders: [{ id: 1, title: "Title", description: "description", completed: false, subtasks: { a: '0', b: '0', c: '1' }, tags: ["click me"] }],
+        reminders: [{ id: 1, title: "Title", description: "description", completed: false, subtasks: { a: '0', b: '0', c: '1' }, tags: ["epic", "test tag"] }],
         id: 2,
         name: "cindy Doe",
         email: "cindy@gmail.com",
@@ -25,6 +25,7 @@ const userModel = {
                 return person
             }
         }
+        //TODO: redirect user to registration if user not found
         throw new Error(`Couldn't find user with email: ${email}`)
     },
     findById: (id) => {
@@ -36,6 +37,7 @@ const userModel = {
         if (user) {
             return user;
         }
+        //TODO: same thing as findOne
         throw new Error(`Couldn't find user with id: ${id}`);
     },
 };

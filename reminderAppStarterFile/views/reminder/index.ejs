@@ -6,7 +6,13 @@
     <li class="list-group-item">
       <strong><%= reminderItem.title %>: </strong>
       <%= reminderItem.description %>
-      || Completed:
+        || Tags:
+        <% for (let subtag of reminderItem.tags) { %>
+        <!--   Make this preetier -->
+            <%= subtag %>
+        <% }%>
+
+        || Completed:
       <% if (reminderItem.completed == true) { %>
         <span class="badge badge-success">True</span>
       <% } else if (reminderItem.completed == false) { %>
