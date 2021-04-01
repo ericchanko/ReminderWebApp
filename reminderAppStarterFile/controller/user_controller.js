@@ -1,7 +1,9 @@
-const dataModel = require("../database").userModel;
+const userModel = require("../database").userModel;
+const dataModel = require("../database").database;
+
 
 const getUserByEmailIdAndPassword = (email, password) => {
-  let user = dataModel.findOne(email);
+  let user = userModel.findOne(email);
   if (user) {
     if (isUserValid(user, password)) {
       return user;
@@ -10,7 +12,7 @@ const getUserByEmailIdAndPassword = (email, password) => {
   return null;
 };
 const getUserById = (id) => {
-  let user = dataModel.findById(id);
+  let user = userModel.findById(id);
   if (user) {
     return user;
   }
@@ -21,7 +23,12 @@ function isUserValid(user, password) {
   return user.password === password;
 }
 
+const getDataModel = (req, res) => {
+  res.render("reminder/frens", {dataModel: dataModel});
+};
+
 module.exports = {
   getUserByEmailIdAndPassword,
   getUserById,
+  getDataModel
 };

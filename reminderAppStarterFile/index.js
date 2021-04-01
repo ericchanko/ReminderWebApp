@@ -8,6 +8,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 const reminderController = require("./controller/reminder_controller");
 const authController = require("./controller/auth_controller");
+const userController = require("./controller/user_controller");
 const passport = require("./middleware/passport");
 const {ensureAuthenticated, forwardAuthenticated} = require("./middleware/checkAuth")
 app.use(express.urlencoded({ extended: true }));
@@ -44,6 +45,10 @@ app.get("/reminder/:id", ensureAuthenticated, reminderController.listOne);
 app.get("/reminder/:id/edit", ensureAuthenticated, reminderController.edit);
 
 app.post("/reminder/", ensureAuthenticated, reminderController.create);
+
+app.get("/frens", ensureAuthenticated, userController.getDataModel);
+
+
 
 // Implement this yourself
 app.post("/reminder/update/:id", ensureAuthenticated, reminderController.update);
