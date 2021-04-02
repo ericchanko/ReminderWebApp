@@ -1,8 +1,11 @@
 let database = require("../database").database;
+const fetch = require("node-fetch")
 
 let remindersController = {
-    list: (req, res) => {
-        res.render("reminder/index", { reminders: req.user.reminders });
+    list: async(req, res) => {
+        let response = await fetch("http://api.weatherapi.com/v1/current.json?key=e2bce0dc69574483965184342210204&q=Vancouver&aqi=no")
+        let data = await response.json();
+        res.render("reminder/index", { reminders: req.user.reminders, data: data });
     },
 
     new: (req, res) => {

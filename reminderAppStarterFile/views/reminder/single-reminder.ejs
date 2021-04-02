@@ -12,24 +12,27 @@
                 <% if (reminderItem.tags.length !== 0) { %>
                     <h4>Tags:</h4>
                     <% for (tags of reminderItem.tags) { %>
-                        <button type="button" onclick="deleteTag(this)" class="btn btn-primary"><%= tags %></button>
+                        <div class="chip">
+                            <%= tags %>
+                                <span class="cls-btn" id="<%=tags %>" onclick=deleteTag(this)>&times;</span>
+                        </div>
                         <% } %>
                             <% } %>
             </div>
             <div>
                 <img src="https://visualpharm.com/assets/449/Alarm-595b40b75ba036ed117d53a8.svg" alt="Alarm Image" style="width:25px;height:25px;display:inline;margin-right:5px;">
-            <% 
+                <% 
             var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric'};
             let d = new Date(reminderItem.datetime); 
             let date = d.toLocaleDateString("en-US", options);
         
             %>
 
-            <% if (reminderItem.datetime) { %>
-                    <%= date %>
-            <% } else { %>
-                    No reminder time set
-            <% } %>
+                    <% if (reminderItem.datetime) { %>
+                        <%= date %>
+                            <% } else { %>
+                                No reminder time set
+                                <% } %>
             </div>
 
             <h4>Subtasks</h4>
@@ -63,13 +66,20 @@
             <form class="deleteForm " method="POST" action=<%="/reminder/delete/" + reminderItem.id %>>
                 <button type="submit" class="btn btn-danger">Delete</button>
             </form>
-
         </li>
     </ul>
     <script>
+        deletedTags = []
+
         function deleteTag(me) {
-            me.remove()
+            deletedTags.push(me.id)
+            me.parentElement.remove()
         }
+        //Need to send deleted Tags
     </script>
 
 </div>
+
+
+
+<!-- <a href=<%= "/reminder/" + reminderItem.id %> -->
