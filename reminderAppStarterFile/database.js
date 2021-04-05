@@ -1,19 +1,21 @@
 let database = [
 
     {
-        reminders: [{ id: 1, title: "Title", description: "description", completed: false, subtasks: { a: '0', b: '0', c: '1' }, tags: ["epic", "test tag"] }],
+        reminders: [{ id: 1, title: "Cindy's Reminder", description: "description", completed: false, subtasks: { a: '0', b: '0', c: '1' }, tags: ["epic", "test tag"] },],
         id: 2,
-        name: "cindy Doe",
+        name: "Cindy Doe",
         email: "cindy@gmail.com",
         password: "c",
+        friends: ["Jimmy Smith"],
     },
 
     {
-        reminders: [{ id: 1, title: "Title2", description: "description2", completed: false, tags: [] }],
+        reminders: [{ id: 1, title: "Jimmy's reminder", description: "description2", completed: false, tags: [] }],
         id: 1,
         name: "Jimmy Smith",
         email: "jimmy123@gmail.com",
         password: "j",
+        friends: [],
     }
 ];
 

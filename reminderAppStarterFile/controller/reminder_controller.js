@@ -5,7 +5,20 @@ let remindersController = {
     list: async(req, res) => {
         let response = await fetch("http://api.weatherapi.com/v1/current.json?key=e2bce0dc69574483965184342210204&q=Vancouver&aqi=no")
         let data = await response.json();
-        res.render("reminder/index", { reminders: req.user.reminders, data: data });
+
+        let allReminders = req.user.reminders;
+        // get user friends remidners
+        for (let friend of req.user.friends) {
+            for (let data of database) {
+                if (data.name === friend) {
+                    allReminders = allReminders.concat(data.reminders);
+                    break;
+                }
+            }
+        }
+
+
+        res.render("reminder/index", { reminders: allReminders, data: data });
     },
 
     new: (req, res) => {
@@ -70,7 +83,7 @@ let remindersController = {
         let reminderToUpdate = req.params.id;
 
         let tag = req.user.reminders[0].tags
-            //Looks at all the tags stored in database and adds user input
+        //Looks at all the tags stored in database and adds user input
 
         splitItems = req.body.tag.split(', ')
         if (splitItems.length !== 0 && splitItems[0] !== '') {
@@ -102,6 +115,17 @@ let remindersController = {
         req.user.reminders.splice(indexNum, 1);
         res.redirect("/reminders")
     },
+
+    addfriend: (req, res) => {
+        let friendId = req.params.id;
+        for (let data of database) {
+            if (data.id === Number(friendId)) {
+                req.user.friends.push(data.name);
+                break;
+            }
+        }
+        res.redirect("/reminders")
+    }
 };
 
 module.exports = remindersController;

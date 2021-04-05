@@ -46,7 +46,10 @@ app.get("/reminder/:id/edit", ensureAuthenticated, reminderController.edit);
 
 app.post("/reminder/", ensureAuthenticated, reminderController.create);
 
-app.get("/frens", ensureAuthenticated, userController.getDataModel);
+app.get("/friends", ensureAuthenticated, userController.getDataModel);
+
+// Adding new friend route
+app.get("/addfriend/:id", ensureAuthenticated, reminderController.addfriend)
 
 // Implement this yourself
 app.post("/reminder/update/:id", ensureAuthenticated, reminderController.update);

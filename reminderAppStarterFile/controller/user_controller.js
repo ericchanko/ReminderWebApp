@@ -24,7 +24,7 @@ function isUserValid(user, password) {
 }
 
 const getDataModel = (req, res) => {
-  res.render("reminder/frens", {dataModel: dataModel});
+  res.render("reminder/friends", {dataModel: dataModel, user: req.user});
 };
 
 module.exports = {

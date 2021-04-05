@@ -1,0 +1,19 @@
+<h4>Friends:</h4>
+
+<% if (user.friends.length === 0) { %>
+    <p>You have no friends :(</p>
+<% } else { %>
+    <% for (let i=0; i<user.friends.length; i++) { %>
+        <%= user.friends[i] %>
+    <% } %>
+<% } %>
+
+<br><br>
+
+<h4>Not Friends:</h4>
+<% for (let data of dataModel) { %>
+    <% if (user.friends.includes(data.name) === false && user.name !== data.name) { %> <!--If current friends list does not include person, this person is not a frend -->
+    <%= data.name %>
+    <a class="pull-right" href=<%="/addfriend/" + data.id %>>Add Friend</a>
+    <% } %>
+<% } %>
