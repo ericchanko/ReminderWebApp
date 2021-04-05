@@ -19,7 +19,7 @@ I worked on the following tasks:
 1. Local passport authentication
 2. Edited index.ejs to add name fields to appropriate tags
 3. Worked with Eric to reimplement the databased, authentication, and getting the correct user remidners for each person
-
+4. Worked with Eric to implement friend functionality (creating a list of friends and their reminders, adding a friend)
 
 Anson Lit:
 I worked on the following tasks:
@@ -39,6 +39,7 @@ I worked on the following tasks:
 3. Worked on forwarding users to dashboard if they're already signed in 
 4. Worked with Nolan to reimplement the databased, authentication, and getting the correct user remidners for each person
 5. Added tags to also be displayed on index view of reminders
+6. Worked with Nolan to implement friend functionality (creating a list of friends and their reminders, adding a friend)
 
 Sprint 2 (March 30th):
 
