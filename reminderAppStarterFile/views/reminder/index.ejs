@@ -1,35 +1,42 @@
 <div class="container">
     <h1 class="page-header">Reminders</h1>
 
-    <ul class="list-group">
-        <% reminders.forEach(function (reminderItem) { %>
-            <li class="list-group-item">
-                <strong><%= reminderItem.title %>: </strong>
-                <%= reminderItem.description %>
-                    || Tags:
-                    <% for (let subtag of reminderItem.tags) { %>
-                        <!--   Make this preetier -->
-                        <div class="chip">
-                            <%= subtag %>
-                        </div>
-                        <% }%>
+    <div class="flexbox">
 
-                            || Completed:
-                            <% if (reminderItem.completed == true) { %>
-                                <span class="badge badge-success">True</span>
-                                <% } else if (reminderItem.completed == false) { %>
-                                    <span class="badge badge-danger">False</span>
-                                    <% } %>
-                                        <a class="pull-right" href=<%="/reminder/" + reminderItem.id %>>View</a>
-            </li>
-            <% }) %>
-    </ul>
-    <p> The current date and time in Vancouver is:
-        <%= data.location.localtime %>
-    </p>
-    <p>
-        The current temp in Vancouver is:
-        <%= data.current.temp_c %> and there is
-            <%= data.current.condition.text %>
-                <img src="<%= data.current.condition.icon %>" )></p>
+        <ul class="list-group">
+            <% reminders.forEach(function (reminderItem) { %>
+                <li class="list-group-item">
+                    <strong><%= reminderItem.title %>: </strong>
+                    <%= reminderItem.description %>
+                        || Tags:
+                        <% for (let subtag of reminderItem.tags) { %>
+                            <!--   Make this preetier -->
+                            <div class="chip">
+                                <%= subtag %>
+                            </div>
+                            <% }%>
+
+                                || Completed:
+                                <% if (reminderItem.completed == true) { %>
+                                    <span class="badge badge-success">True</span>
+                                    <% } else if (reminderItem.completed == false) { %>
+                                        <span class="badge badge-danger">False</span>
+                                        <% } %>
+                                            <a class="pull-right" href=<%="/reminder/" + reminderItem.id %>>View</a>
+                </li>
+                <% }) %>
+        </ul>
+        <div class="weatherWidget">
+            <h6>Weather</h6>
+            <% dateTime = data.location.localtime.split(" ") %>
+                <p> The current date is
+                    <%= dateTime[0] %> and the current time in Vancouver is
+                        <%= dateTime[1] %>
+                </p>
+                <p> Current Vancouver temperature is
+                    <%= data.current.temp_c %>°C and the weather outside is
+                        <%= data.current.condition.text %>
+                            <img src="<%= data.current.condition.icon %>"></p>
+        </div>
+    </div>
 </div>

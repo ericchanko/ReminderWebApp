@@ -210,3 +210,17 @@ footer.footer {
     font-size: 20px;
     cursor: pointer;
 }
+
+.weatherWidget {
+    /* border: 2px solid lightgrey; */
+    padding-left: 50px;
+    flex-basis: 250px;
+}
+
+.flexbox {
+    display: flex
+}
+
+.list-group {
+    flex-grow: 1;
+}
