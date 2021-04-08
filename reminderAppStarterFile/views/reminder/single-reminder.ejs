@@ -36,22 +36,30 @@
             </div>
 
             <h4>Subtasks</h4>
-            <ul id="subtask-list" class="list-unstyled checkbox" name="subtasks">
+            <form action=<%= "/reminder/update/" + reminderItem.id + "?singleReminder=true"%> method="POST">
+                <div class="form-group">
+                    <ul id="subtask-list" class="list-unstyled checkbox" name="subtasks">
 
-                <% for (let key in reminderItem.subtasks) { %>
-                    <li style="padding-left:10px">
-                        <label>
-                        <% if (reminderItem.subtasks[key] === "1") { %>
-                            <input type="checkbox" name="subtasks[<%= key %>]" value="1" class="checkboxes" checked onclick="return false">
-                        <% } else { %>
-                            <input type="checkbox" name="subtasks[<%= key %>]" value="1" class="checkboxes" onclick="return false">
-                        <% } %>
-                        <span class=checkedLabel><%= key %></span>
-                    </label>
-                    </li>
+                        <% for (let key in reminderItem.subtasks) { %>
+                            <li style="padding-left:10px">
+                                <label>
+                                <% if (reminderItem.subtasks[key] === "1") { %>
+                                    <input type="hidden" name="subtasks[<%= key %>]" value="0" disabled>
+                                    <input type="checkbox" name="subtasks[<%= key %>]" value="1" class="checkboxes" checked onclick="setDisabled(this)" onChange="this.form.submit()">
+                                <% } else { %>
+                                    <input type="hidden" name="subtasks[<%= key %>]" value="0">
+                                    <input type="checkbox" name="subtasks[<%= key %>]" value="1" class="checkboxes" onclick="setDisabled(this)" onChange="this.form.submit()">
+                                <% } %>
+                                <span class=checkedLabel><%= key %></span>
+                            </label>
+                            </li>
 
-                    <% } %>
-            </ul>
+                            <% } %>
+                    </ul>
+
+            
+                </div>
+            </form>
 
             <h4>Completed:
                 <% if (reminderItem.completed == true) { %>
@@ -76,6 +84,17 @@
             me.parentElement.remove()
         }
         //Need to send deleted Tags
+
+
+
+        function setDisabled(thisElem) {
+            if (thisElem.previousSibling.previousSibling.disabled) {
+                thisElem.previousSibling.previousSibling.disabled = false
+            }
+            else {
+                thisElem.previousSibling.previousSibling.disabled = true
+        }
+    }
     </script>
 
 </div>

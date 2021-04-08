@@ -82,6 +82,18 @@ let remindersController = {
         // implement this code
         let reminderToUpdate = req.params.id;
 
+        let checkIfSR = req.query.singleReminder;
+        if (checkIfSR) {
+            let { subtasks } = req.body;
+            for (var r in req.user.reminders) {
+                if (req.user.reminders[r].id.toString() === reminderToUpdate) {
+                    req.user.reminders[r].subtasks = subtasks;
+                    break;
+                }
+            }
+            return false;
+        }
+
         let tag = req.user.reminders[0].tags
         //Looks at all the tags stored in database and adds user input
 
