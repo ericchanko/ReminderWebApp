@@ -1,4 +1,4 @@
-March 21, 2021 (First Sprint Complete)
+Breakdown of work
 
 Hugo Kwan:
 I worked on the following tasks:
@@ -7,12 +7,14 @@ I worked on the following tasks:
 3. Created a datepicker functionality for reminders
 4. Added a .gitignore file to ignore node modules
 5. Added subtasks functionality for create, edit, and single reminders
+6. Changed single reminders page so users can check-off subtasks there as well
 
 I also needed to research on Youtube and Google the following things:
 1. How to find the lowest available id efficiently 
 2. How to use input datetime-local
 3. How to POST unchecked checkboxes 
 4. How to strikethrough text when checkbox is checked
+5. How to POST without a submit button
 
 Nolan Chow:
 I worked on the following tasks:
@@ -40,7 +42,5 @@ I worked on the following tasks:
 4. Worked with Nolan to reimplement the databased, authentication, and getting the correct user remidners for each person
 5. Added tags to also be displayed on index view of reminders
 6. Worked with Nolan to implement friend functionality (creating a list of friends and their reminders, adding a friend)
-
-Sprint 2 (March 30th):
 
 
