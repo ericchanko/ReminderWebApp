@@ -79,11 +79,11 @@ let remindersController = {
     },
 
     update: (req, res) => {
-        // implement this code
         let reminderToUpdate = req.params.id;
 
         let checkIfSR = req.query.singleReminder;
         if (checkIfSR) {
+            // check if update req is sent from single reminders page
             let { subtasks } = req.body;
             for (var r in req.user.reminders) {
                 if (req.user.reminders[r].id.toString() === reminderToUpdate) {
@@ -91,34 +91,36 @@ let remindersController = {
                     break;
                 }
             }
-            return false;
+            res.status(204).send();
         }
+        else {
 
-        let tag = req.user.reminders[0].tags
-        //Looks at all the tags stored in database and adds user input
+            let tag = req.user.reminders[0].tags
+            //Looks at all the tags stored in database and adds user input
 
-        splitItems = req.body.tag.split(', ')
-        if (splitItems.length !== 0 && splitItems[0] !== '') {
-            for (items of splitItems) {
-                tag.push(items)
+            splitItems = req.body.tag.split(', ')
+            if (splitItems.length !== 0 && splitItems[0] !== '') {
+                for (items of splitItems) {
+                    tag.push(items)
+                }
             }
-        }
-        let { title, description, completed, datetime, subtasks } = req.body;
+            let { title, description, completed, datetime, subtasks } = req.body;
 
 
-        for (var r in req.user.reminders) {
-            if (req.user.reminders[r].id.toString() === reminderToUpdate) {
-                req.user.reminders[r].title = title;
-                req.user.reminders[r].description = description;
-                req.user.reminders[r].tags = tag;
-                req.user.reminders[r].completed = JSON.parse(completed);
-                req.user.reminders[r].datetime = datetime;
-                req.user.reminders[r].subtasks = subtasks;
-                break;
+            for (var r in req.user.reminders) {
+                if (req.user.reminders[r].id.toString() === reminderToUpdate) {
+                    req.user.reminders[r].title = title;
+                    req.user.reminders[r].description = description;
+                    req.user.reminders[r].tags = tag;
+                    req.user.reminders[r].completed = JSON.parse(completed);
+                    req.user.reminders[r].datetime = datetime;
+                    req.user.reminders[r].subtasks = subtasks;
+                    break;
+                }
             }
-        }
 
-        res.redirect("/reminders");
+            res.redirect("/reminders");
+        }
     },
 
     delete: (req, res) => {
