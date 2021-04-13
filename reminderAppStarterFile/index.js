@@ -62,6 +62,7 @@ app.get("/register", forwardAuthenticated, authController.register);
 app.get("/login", forwardAuthenticated, authController.login);
 app.post("/register", authController.registerSubmit);
 app.post("/login", authController.loginSubmit);
+app.get("/logout", authController.logout)
 
 app.listen(3001, function() {
     console.log(
