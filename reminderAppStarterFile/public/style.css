@@ -200,6 +200,8 @@ footer.footer {
     line-height: 30px;
     border-radius: 25px;
     background-color: lightblue;
+    border-style: hidden;
+    outline: none;
 }
 
 .cls-btn {
@@ -223,4 +225,42 @@ footer.footer {
 
 .list-group {
     flex-grow: 1;
+}
+
+.closebtn, .addtagbtn {
+    padding-left: 10px;
+    color: #888;
+    font-weight: bold;
+    float: right;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.closebtn:hover {
+    color: #000;
+}
+
+.tag-input-container{
+    position: relative;
+}
+
+/* .addtagbtn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 10px 20px;
+} */
+
+.tag-input-field {
+    cursor: text;
+}
+
+
+span.tag-input-field[contenteditable]:empty::before {
+    content: attr(data-placeholder);
+    display: inline-block;
+    color: gray;
+}
+span.tag-input-field[contenteditable]:empty:focus::before {
+    content: attr(data-focused-advice);
 }

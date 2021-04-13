@@ -32,9 +32,24 @@
         <button type="button" onclick="clearValue()" class="btn btn-sm btn-warning">Clear</button>
     </div>
     
-    <div class="form-group">
+    <!-- <div class="form-group">
                 <label for="tag">Add comma separated tags </label>
                 <input type="text" id="tag" name="tag">
+    </div> -->
+    <div class="form-group tags-container">
+        Tags:
+        <% if (reminderItem.tags.length !== 0) { %>
+            <% for (tag of reminderItem.tags) { %>
+                <div class="chip">
+                    <input type="hidden" name="tags[]" value="<%= tag %>"><%= tag %>
+                    <span class="closebtn" onclick="deleteSubtask(this)">&times;</span>
+                </div>
+                <% } %>
+        <% } %>
+        <div class="tag-input-container badge">
+            <span contenteditable="true" id="new-tag" class="input chip tag-input-field" data-placeholder="Add tag" data-focused-advice="" onfocusout="addTag(this)"></span>
+            <!-- <span class="addtagbtn" onclick="addTag(this)">+</span> -->
+        </div>
     </div>
 
     <div class="checkbox subtask-form">
@@ -155,4 +170,37 @@
 		let ul = listItem.parentNode;
 		ul.removeChild(listItem);
     }
+    function addTag(thisElem) {
+        console.log(thisElem.innerText)
+
+        let tagText = thisElem.innerText
+        console.log(tagText)
+        if (tagText === "") { return }
+        let div = document.createElement("DIV")
+        div.setAttribute("class", "chip")
+
+        let input = document.createElement("INPUT")
+        input.setAttribute("type", "hidden")
+        input.setAttribute("name", "tags[]")
+        input.setAttribute("value", tagText)
+
+        let span = document.createElement("SPAN")
+        span.setAttribute("class", "closebtn")
+        span.setAttribute("onclick", "deleteSubtask(this)")
+        span.innerText = "×"
+
+        div.innerText = tagText
+        div.appendChild(input)
+        div.appendChild(span)
+
+        let tagsContainer = document.querySelector(".tags-container")
+        tagsContainer.insertBefore(div, thisElem.parentElement)
+
+        thisElem.innerText = ""
+    }
+    document.getElementById('new-tag').addEventListener('keydown', (e) => {
+    if (e.keyCode === 13) {
+        e.preventDefault();
+    }
+});
 </script>

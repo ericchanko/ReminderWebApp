@@ -95,16 +95,16 @@ let remindersController = {
         }
         else {
 
-            let tag = req.user.reminders[0].tags
-            //Looks at all the tags stored in database and adds user input
+            // let tag = req.user.reminders[0].tags
+            // //Looks at all the tags stored in database and adds user input
 
-            splitItems = req.body.tag.split(', ')
-            if (splitItems.length !== 0 && splitItems[0] !== '') {
-                for (items of splitItems) {
-                    tag.push(items)
-                }
-            }
-            let { title, description, completed, datetime, subtasks } = req.body;
+            // splitItems = req.body.tag.split(', ')
+            // if (splitItems.length !== 0 && splitItems[0] !== '') {
+            //     for (items of splitItems) {
+            //         tag.push(items)
+            //     }
+            // }
+            let { title, description, completed, datetime, subtasks, tags } = req.body;
 
 
             for (var r in req.user.reminders) {
@@ -115,6 +115,7 @@ let remindersController = {
                     req.user.reminders[r].completed = JSON.parse(completed);
                     req.user.reminders[r].datetime = datetime;
                     req.user.reminders[r].subtasks = subtasks;
+                    req.user.reminders[r].tags = tags;
                     break;
                 }
             }

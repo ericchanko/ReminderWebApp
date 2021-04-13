@@ -35,8 +35,9 @@
                                 <% } %>
             </div>
 
-            <h4>Subtasks</h4>
+            
             <form action=<%= "/reminder/update/" + reminderItem.id + "?singleReminder=true"%> method="POST">
+                <h4>Subtasks</h4>
                 <div class="form-group">
                     <ul id="subtask-list" class="list-unstyled checkbox" name="subtasks">
 
