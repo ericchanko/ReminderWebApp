@@ -8,6 +8,7 @@ I worked on the following tasks:
 4. Added a .gitignore file to ignore node modules
 5. Added subtasks functionality for create, edit, and single reminders
 6. Changed single reminders page so users can check-off subtasks there as well
+7. Added delete functionality of tags
 
 I also needed to research on Youtube and Google the following things:
 1. How to find the lowest available id efficiently 
@@ -28,10 +29,10 @@ I worked on the following tasks:
 1. Deleting reminders
 2. Added tag functionality to reminders
 3. Added visual tags for single remidners
-4. Added delete functionality of tags and a few tag bugs
+4. Incoporated weather API
 5. 
 I also needed to research on Youtube and Google the following things:
-1.
+1. Watched lecture on API to learn how to implement the API
 2.
 
 Eric Chang:
