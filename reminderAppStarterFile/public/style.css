@@ -264,3 +264,14 @@ span.tag-input-field[contenteditable]:empty::before {
 span.tag-input-field[contenteditable]:empty:focus::before {
     content: attr(data-focused-advice);
 }
+
+.reminder-time-container, .tags-container {
+    margin-bottom: 10px;
+}
+
+#new-tag {
+    background-color: white;
+    border-style: dotted;
+    border-width: thin;
+    border-color: gray;
+}

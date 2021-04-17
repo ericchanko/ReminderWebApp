@@ -8,23 +8,26 @@
                 <li class="list-group-item">
                     <strong><%= reminderItem.title %>: </strong>
                     <%= reminderItem.description %>
+                    <% if (reminderItem.tags !== undefined) { %>
                         || Tags:
-                        <% for (let subtag of reminderItem.tags) { %>
-                            <!--   Make this preetier -->
-                            <div class="chip">
-                                <%= subtag %>
-                            </div>
-                            <% }%>
+                        
+                            <% for (let subtag of reminderItem.tags) { %>
+                                <!--   Make this preetier -->
+                                <div class="chip">
+                                    <%= subtag %>
+                                </div>
+                                <% }%>
+                                <% } %>
 
-                                || Completed:
-                                <% if (reminderItem.completed == true) { %>
-                                    <span class="badge badge-success">True</span>
-                                    <% } else if (reminderItem.completed == false) { %>
-                                        <span class="badge badge-danger">False</span>
-                                        <% } %>
-                                            <a class="pull-right" href=<%="/reminder/" + reminderItem.id %>>View</a>
+                                    || Completed:
+                                    <% if (reminderItem.completed == true) { %>
+                                        <span class="badge badge-success">True</span>
+                                        <% } else if (reminderItem.completed == false) { %>
+                                            <span class="badge badge-danger">False</span>
+                                            <% } %>
+                                                <a class="pull-right" href=<%="/reminder/" + reminderItem.id %>>View</a>
                 </li>
-                <% }) %>
+                    <% }) %>
         </ul>
         <div class="weatherWidget">
             <h6>Weather</h6>
