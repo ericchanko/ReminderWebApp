@@ -11,13 +11,9 @@
 </head>
 
 <body>
-    <% if (typeof loggedIn == 'undefined') { %>
-        <% include ./partials/navbar-loggedin %>
-            <% } else if (loggedIn == false){ %>
-                <% include ./partials/navbar %>
-                    <% } %>
-                        <%- body %>
-                            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <% include ./partials/navbar %>
+        <%- body %>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

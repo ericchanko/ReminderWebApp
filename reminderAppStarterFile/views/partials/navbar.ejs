@@ -8,6 +8,9 @@
             <a class="nav-item nav-link" href="/reminders">Reminder List</a>
             <a class="nav-item nav-link" href="/reminder/new">Create</a>
             <a class="nav-item nav-link" href="/friends">Friends</a>
+            <% if (typeof loggedIn == 'undefined') { %>
+                <a class="nav-item nav-link" href="/logout">Logout</a>
+                <% } %>
         </div>
     </div>
 </nav>
