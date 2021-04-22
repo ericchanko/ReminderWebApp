@@ -2,11 +2,11 @@ const passport = require("../middleware/passport");
 
 let authController = {
     login: (req, res) => {
-        res.render("auth/login");
+        res.render("auth/login", { loggedIn: false });
     },
 
     register: (req, res) => {
-        res.render("auth/register");
+        res.render("auth/register", { loggedIn: false });
     },
 
     loginSubmit: (req, res, next) => {
