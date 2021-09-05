@@ -15,7 +15,7 @@ An in-depth paragraph about your project and overview of use.
 ### Installing
 
 1. Download the zip file
-2. ![image](https://user-images.githubusercontent.com/72037665/132135010-2aaedbba-1946-496b-b96b-7a313398f466.png)
+![image](https://user-images.githubusercontent.com/72037665/132135010-2aaedbba-1946-496b-b96b-7a313398f466.png)
 3. Extract the zip file onto your workplace
 * Any modifications needed to be made to files/folders
 
