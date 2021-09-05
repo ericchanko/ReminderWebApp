@@ -10,27 +10,27 @@ An in-depth paragraph about your project and overview of use.
 
 ### Dependencies
 
-* Already within node-modules.json
+* Node.js
 
 ### Installing
 
-* How/where to download your program
+1. Download the zip file
+2. ![image](https://user-images.githubusercontent.com/72037665/132134865-dda6e485-246f-406f-873b-3b82b64ee4f8.png)
+3. Extract the zip file onto your workplace
 * Any modifications needed to be made to files/folders
 
-### Executing program
+### Executing program through terminal
 
-* How to run the program
-* Step-by-step bullets
+ 1. Navigate to project work space
 ```
-code blocks for commands
-```
+cd ~/ReminderWebAPP/re*
 
-## Help
+```
+ 2. Install the dependencies using ```npm install```
+ 3. Run the program using ```node index```
+ 4. Visit localhost:3001/reminders in your browser
 
-Any advise for common problems or issues.
-```
-command to run if program contains helper info
-```
+
 
 ## Authors
 
