@@ -1,10 +1,16 @@
 # Reminder Web Application
 
-This App is a simple web application t
+This App presents a simple way to organize your life using reminders!
 
 ## Description
 
-An in-depth paragraph about your project and overview of use.
+This reminder web applicataion features the following:
+* Mobile Responsiveness Design
+* Weather API
+* Datetime API
+* Password Authentication
+* CRUD functionality for reminders (Create, Read, Update, Delete)
+* Social functionality (Can view friends reminders)
 
 ## Getting Started
 
