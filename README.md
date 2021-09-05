@@ -36,10 +36,10 @@ cd ~/ReminderWebAPP/re*
 
 Contributors names and contact info
 
-Eric Chang [@ericchanko](https://github.com/ericchanko)
-Nolan Chow [@Nolan-Chow](https://github.com/Nolan-Chow)
-Hugo Kwan [@hu9okwan](https://github.com/hu9okwan)
-Anson Lit [@nightrythm](https://github.com/nightrhythm)
+* Eric Chang [@ericchanko](https://github.com/ericchanko)
+* Nolan Chow [@Nolan-Chow](https://github.com/Nolan-Chow)
+* Hugo Kwan [@hu9okwan](https://github.com/hu9okwan)
+* Anson Lit [@nightrythm](https://github.com/nightrhythm)
 
 
 
